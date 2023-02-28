@@ -1,0 +1,16 @@
+{
+  "main": "chaincode.js",
+  "scripts": {
+    "start": "node chaincode.js"
+  },
+  "dependencies": {
+    "fabric-contract-api": "^2.5.2",
+    "fabric-network": "^2.2.16",
+    "fabric-shim": "^2.5.2"
+  },
+  "name": "chaincode",
+  "version": "1.0.0",
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

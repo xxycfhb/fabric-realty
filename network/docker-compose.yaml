@@ -124,7 +124,7 @@ services:
       - ./config:/etc/hyperledger/config
       - ./crypto-config/peerOrganizations/taobao.com/:/etc/hyperledger/peer/taobao.com
       - ./crypto-config/peerOrganizations/jd.com/:/etc/hyperledger/peer/jd.com
-      - ./../chaincode:/opt/gopath/src/chaincode # 链码路径注入
+      - ./../chaincode:/chaincode # 链码路径注入
     networks:
       - fabric_network
     depends_on:

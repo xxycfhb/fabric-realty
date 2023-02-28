@@ -1,3 +1,5 @@
+Trying using nodejs to rewrite the chaincodes
+
 > 🚀 本项目使用 Hyperledger Fabric 构建底层区块链网络, go 编写智能合约，应用层使用 gin+fabric-sdk-go ，前端使用 vue+element-ui
 
 如果想要联系我，可以关注我的公众号【gopher云原生】
