@@ -20,7 +20,7 @@ async function DelLedger(stub, objectType, keys) {
 // 将keys拆分查询
 async function GetStateByPartialCompositeKeys(stub, objectType, keys) {
   let results = [];
-  if (keys.length() == 0) {
+  if (keys.length == 0) {
     // 传入的keys长度为0，则查找并返回所有数据
     // 通过主键从区块链查找相关的数据，相当于对主键的模糊查询
     let resultIterator = stub.GetStateByPartialCompositeKey(objectType, keys);

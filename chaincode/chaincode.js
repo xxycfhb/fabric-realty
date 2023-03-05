@@ -35,38 +35,39 @@ const Chaincode = class {
   }
 
   async Invoke(stub) {
-    let funcName,
-      args = stub.GetFunctionAndParameters();
-  //   switch (funcName) {
-  //     case "hello":
-  //       return api.Hello(stub, args);
-  //     case "queryAccountList":
-  //       return api.QueryAccountList(stub, args);
-  //     case "createRealEstate":
-  //       return api.CreateRealEstate(stub, args);
-  //     case "queryRealEstateList":
-  //       return api.QueryRealEstateList(stub, args);
-  //     case "createSelling":
-  //       return api.CreateSelling(stub, args);
-  //     case "createSellingByBuy":
-  //       return api.CreateSellingByBuy(stub, args);
-  //     case "querySellingList":
-  //       return api.QuerySellingList(stub, args);
-  //     case "querySellingListByBuyer":
-  //       return api.QuerySellingListByBuyer(stub, args);
-  //     case "updateSelling":
-  //       return api.UpdateSelling(stub, args);
-  //     case "createDonating":
-  //       return api.CreateDonating(stub, args);
-  //     case "queryDonatingList":
-  //       return api.QueryDonatingList(stub, args);
-  //     case "queryDonatingListByGrantee":
-  //       return api.QueryDonatingListByGrantee(stub, args);
-  //     case "updateDonating":
-  //       return api.UpdateDonating(stub, args);
-  //     default:
-  //       return shim.error(fmt.Sprintf("没有该功能: %s", funcName));
-  //   }
+    let ret = stub.getFunctionAndParameters();
+    let funcName = ret.fcn;
+    let args = ret.params;
+    // switch (funcName) {
+    //   case "hello":
+    //     return api.Hello(stub, args);
+    //   case "queryAccountList":
+    //     return api.QueryAccountList(stub, args);
+    //   case "createRealEstate":
+    //     return api.CreateRealEstate(stub, args);
+    //   case "queryRealEstateList":
+    //     return api.QueryRealEstateList(stub, args);
+    //   case "createSelling":
+    //     return api.CreateSelling(stub, args);
+    //   case "createSellingByBuy":
+    //     return api.CreateSellingByBuy(stub, args);
+    //   case "querySellingList":
+    //     return api.QuerySellingList(stub, args);
+    //   case "querySellingListByBuyer":
+    //     return api.QuerySellingListByBuyer(stub, args);
+    //   case "updateSelling":
+    //     return api.UpdateSelling(stub, args);
+    //   case "createDonating":
+    //     return api.CreateDonating(stub, args);
+    //   case "queryDonatingList":
+    //     return api.QueryDonatingList(stub, args);
+    //   case "queryDonatingListByGrantee":
+    //     return api.QueryDonatingListByGrantee(stub, args);
+    //   case "updateDonating":
+    //     return api.UpdateDonating(stub, args);
+    //   default:
+    //     return shim.error(`没有该功能: ${funcName}`);
+    // }
     return shim.success("success");
   }
 };

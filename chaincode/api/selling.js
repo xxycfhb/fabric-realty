@@ -4,7 +4,7 @@ const utils = require("../pkg/utils/fabric");
 // CreateSelling 发起销售
 function CreateSelling(stub, args) {
   // 验证参数
-  if (args.length() !== 4) {
+  if (args.length !== 4) {
     return shim.error("参数个数不满足");
   }
   let objectOfSale = args[0];
@@ -40,7 +40,7 @@ function CreateSelling(stub, args) {
     model.RealEstateKey,
     [seller, objectOfSale]
   );
-  if (resultsRealEstate.length() !== 1) {
+  if (resultsRealEstate.length !== 1) {
     return shim.error(`验证${objectOfSale}属于${seller}失败`);
   }
   let realEstate;
@@ -84,7 +84,7 @@ function CreateSelling(stub, args) {
 // CreateSellingByBuy 参与销售(买家购买)
 function CreateSellingByBuy(stub, args) {
   // 验证参数
-  if (args.length() !== 3) {
+  if (args.length !== 3) {
     return shim.error("参数个数不满足");
   }
   let objectOfSale = args[0];
@@ -102,7 +102,7 @@ function CreateSellingByBuy(stub, args) {
     model.RealEstateKey,
     [seller, objectOfSale]
   );
-  if (resultsRealEstate.length() !== 1) {
+  if (resultsRealEstate.length !== 1) {
     return shim.error(
       fmt.Sprintf(
         "根据%s和%s获取想要购买的房产信息失败: %s",
@@ -118,7 +118,7 @@ function CreateSellingByBuy(stub, args) {
     model.SellingKey,
     [seller, objectOfSale]
   );
-  if (resultsSelling.length() !== 1) {
+  if (resultsSelling.length !== 1) {
     return shim.error(
       fmt.Sprintf("根据%s和%s获取销售信息失败: %s", objectOfSale, seller, err)
     );
@@ -211,7 +211,7 @@ function QuerySellingList(stub, args) {
 
 // QuerySellingListByBuyer 根据参与销售人、买家(买家AccountId)查询销售(参与的)(供买家查询)
 function QuerySellingListByBuyer(stub, args) {
-  if (args.length() !== 1) {
+  if (args.length !== 1) {
     return shim.error(`必须指定买家AccountId查询`);
   }
   let sellingBuyList = [];
@@ -236,7 +236,7 @@ function QuerySellingListByBuyer(stub, args) {
 // UpdateSelling 更新销售状态（买家确认、买卖家取消）
 function UpdateSelling(stub, args) {
   // 验证参数
-  if (args.length() !== 4) {
+  if (args.length !== 4) {
     return shim.error("参数个数不满足");
   }
   let objectOfSale = args[0];
@@ -255,7 +255,7 @@ function UpdateSelling(stub, args) {
     model.RealEstateKey,
     [seller, objectOfSale]
   );
-  if (resultsRealEstate.length() !== 1) {
+  if (resultsRealEstate.length !== 1) {
     return shim.error(
       `根据${objectOfSale}和${seller}获取想要购买的房产信息失败`
     );
@@ -290,7 +290,7 @@ function UpdateSelling(stub, args) {
       model.SellingBuyKey,
       [buyer]
     );
-    if (resultsSellingByBuyer.length() === 0) {
+    if (resultsSellingByBuyer.length === 0) {
       return shim.error(`根据${buyer}获取买家购买信息失败`);
     }
     for (const result of resultsSellingByBuyer) {
@@ -329,7 +329,7 @@ function UpdateSelling(stub, args) {
         model.AccountKey,
         { seller }
       );
-      if (resultsSellerAccount.length() !== 1) {
+      if (resultsSellerAccount.length !== 1) {
         return shim.error(`seller卖家信息验证失败`);
       }
       let accountSeller;
@@ -426,7 +426,7 @@ function closeSelling(
         model.AccountKey,
         [buyer]
       );
-      if (resultsBuyerAccount.length() !== 1) {
+      if (resultsBuyerAccount.length !== 1) {
         return null;
       }
       let accountBuyer;

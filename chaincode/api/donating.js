@@ -6,7 +6,7 @@ const shim = require("fabric-shim");
 // CreateDonating 发起捐赠
 function CreateDonating(stub, args) {
   // 验证参数
-  if (args.length() != 3) {
+  if (args.length != 3) {
     return shim.error("参数个数不满足");
   }
   let objectOfDonating = args[0];
@@ -24,7 +24,7 @@ function CreateDonating(stub, args) {
     model.RealEstateKey,
     [donor, objectOfDonating]
   );
-  if (resultsRealEstate.length() !== 1) {
+  if (resultsRealEstate.length !== 1) {
     return shim.error(`验证${objectOfDonating}属于${donor}失败: ${err}`);
   }
 
@@ -41,7 +41,7 @@ function CreateDonating(stub, args) {
     model.AccountKey,
     grantee
   );
-  if (resultsAccount.length() !== 1) {
+  if (resultsAccount.length !== 1) {
     return shim.error(`grantee受赠人信息验证失败`);
   }
 
@@ -124,7 +124,7 @@ async function QueryDonatingList(stub, args) {
 
 // QueryDonatingListByGrantee 根据受赠人(受赠人AccountId)查询捐赠(受赠的)(供受赠人查询)
 function QueryDonatingListByGrantee(stub, args) {
-  if (args.length() !== 1) {
+  if (args.length !== 1) {
     return shim.error(`必须指定受赠人AccountId查询`);
   }
   let donatingGranteeList = [];
@@ -149,7 +149,7 @@ function QueryDonatingListByGrantee(stub, args) {
 // UpdateDonating 更新捐赠状态（确认受赠、取消）
 function UpdateDonating(stub, args) {
   // 验证参数
-  if (args.length() !== 4) {
+  if (args.length !== 4) {
     return shim.error("参数个数不满足");
   }
   let objectOfDonating = args[0];
@@ -173,7 +173,7 @@ function UpdateDonating(stub, args) {
     model.RealEstateKey,
     [donor, objectOfDonating]
   );
-  if (resultsRealEstate.length() !== 1) {
+  if (resultsRealEstate.length !== 1) {
     return shim.error(
       `根据${objectOfDonating}和${donor}获取想要购买的房产信息失败`
     );
@@ -205,7 +205,7 @@ function UpdateDonating(stub, args) {
     model.DonatingKey,
     [donor, objectOfDonating, grantee]
   );
-  if (resultsDonating.length() !== 1) {
+  if (resultsDonating.length !== 1) {
     return shim.error(
       `根据${objectOfDonating}和${donor}和${grantee}获取销售信息失败`
     );
@@ -229,7 +229,7 @@ function UpdateDonating(stub, args) {
     model.DonatingGranteeKey,
     [grantee]
   );
-  if (resultsDonatingGrantee.length() === 0) {
+  if (resultsDonatingGrantee.length === 0) {
     return shim.error(`根据${grantee}获取受赠人信息失败`);
   }
   for (const result of resultsDonatingGrantee) {

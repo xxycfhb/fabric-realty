@@ -4,7 +4,7 @@ const utils = require("../pkg/utils/fabric");
 // CreateRealEstate 新建房地产(管理员)
 function CreateRealEstate(stub, args) {
   // 验证参数
-  if (args.length() !== 4) {
+  if (args.length !== 4) {
     return shim.Error("参数个数不满足");
   }
   let accountId = args[0]; //accountId用于验证是否为管理员
@@ -43,7 +43,7 @@ function CreateRealEstate(stub, args) {
     model.AccountKey,
     [accountId]
   );
-  if (resultsAccount.length() !== 1) {
+  if (resultsAccount.length !== 1) {
     return shim.error(`操作人权限验证失败${err}`);
   }
   let account;
@@ -61,7 +61,7 @@ function CreateRealEstate(stub, args) {
     model.AccountKey,
     [proprietor]
   );
-  if (resultsProprietor.length() !== 1) {
+  if (resultsProprietor.length !== 1) {
     return shim.error(`业主proprietor信息验证失败${err}`);
   }
   let realEstate = {
