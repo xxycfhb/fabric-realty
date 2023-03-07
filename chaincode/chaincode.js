@@ -1,5 +1,5 @@
 const shim = require("fabric-shim");
-const model = require("./model/model");
+// const model = require("./model/model");
 
 const Chaincode = class {
   async Init(stub) {
@@ -31,13 +31,13 @@ const Chaincode = class {
     //     return shim.error(fmt.Sprintf("%s", err));
     //   }
     // }
-    return shim.success(nil);
+    // return shim.success(Buffer.from("Initialized successfully!"));
   }
 
   async Invoke(stub) {
-    let ret = stub.getFunctionAndParameters();
-    let funcName = ret.fcn;
-    let args = ret.params;
+    // let ret = stub.getFunctionAndParameters();
+    // let funcName = ret.fcn;
+    // let args = ret.params;
     // switch (funcName) {
     //   case "hello":
     //     return api.Hello(stub, args);
@@ -68,7 +68,7 @@ const Chaincode = class {
     //   default:
     //     return shim.error(`没有该功能: ${funcName}`);
     // }
-    return shim.success("success");
+    // return shim.success(Buffer.from("success"));
   }
 };
 

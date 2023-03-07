@@ -7,6 +7,7 @@ volumes:
   peer0.jd.com:
   peer1.jd.com:
 
+
 networks:
   fabric_network:
     name: fabric_network
@@ -26,7 +27,8 @@ services:
     command: orderer
     ports:
       - "7050:7050"
-    volumes: # 挂载由cryptogen和configtxgen生成的证书文件以及创世区块
+    volumes:
+      # 挂载由cryptogen和configtxgen生成的证书文件以及创世区块
       - ./config/genesis.block:/etc/hyperledger/config/genesis.block
       - ./crypto-config/ordererOrganizations/qq.com/orderers/orderer.qq.com/:/etc/hyperledger/orderer
       - orderer.qq.com:/var/hyperledger/production/orderer
@@ -40,11 +42,13 @@ services:
       service: peer-base
     container_name: peer0.taobao.com
     environment:
+      - CORE_VM_DOCKER_ATTACHSTDOUT=true
       - CORE_PEER_ID=peer0.taobao.com
       - CORE_PEER_LOCALMSPID=TaobaoMSP
       - CORE_PEER_ADDRESS=peer0.taobao.com:7051
     ports:
       - "7051:7051" # grpc服务端口
+      - "7052:7052" # non-tls
       - "7053:7053" # eventhub端口
     volumes:
       - ./crypto-config/peerOrganizations/taobao.com/peers/peer0.taobao.com:/etc/hyperledger/peer
@@ -119,6 +123,7 @@ services:
       - GO111MODULE=auto
       - GOPROXY=https://goproxy.cn
       - CORE_PEER_ID=cli
+      - CORE_PEER_TLS_ENABLED = false
     command: /bin/bash
     volumes:
       - ./config:/etc/hyperledger/config
